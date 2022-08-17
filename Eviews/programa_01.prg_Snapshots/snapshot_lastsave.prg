@@ -1,3 +1,6 @@
+' abre o workfile
+wfopen C:\Users\bteba\Documents\Github\gyorgy\Eviews\workfile.wf1
+
 ' Agrupa as variaveis de interesse
 group group_variaveis alternativo inflacao internacional multimercados pos_fixado pre_fixado  renda_variavel sem_classificacao
 
@@ -51,4 +54,5 @@ m_irf_dspx.line
 m_irf_dcrb.line
 m_irf_dcds.line
 m_irf_vix.line
+
 

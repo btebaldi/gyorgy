@@ -23,6 +23,11 @@ group_variaveis.makepcomp(loading=load) pca1 pca2
 var var01.ls 1 1 pca1 pca2 dspx dcrb dcds vix @ c covid19 covid1901 
 var var05.ls 1 5 pca1 pca2 dspx dcrb dcds vix @ c covid19 covid1901 
 
+' Estima um VAR restrito 
+var01.ls 1 1 pca1 pca2 dspx dcrb dcds vix @ c covid19 covid1901  @restrict @vec(l1) = "na, na, 0, 0, 0, 0, na, na, 0, 0, 0, 0, na, na, na, na, na, na, na, na, 0, na, na, na, na, na, 0, 0, na, 0, na, na, na, na, na, na"
+
+' Estima um VAR restrito
+
 ' Apaga IRF_response caso exista
 if @isobject("IRF_response") then
 	delete IRF_response

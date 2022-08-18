@@ -21,6 +21,7 @@ group_variaveis.makepcomp(loading=load) pca1 pca2
 
 ' estima o VAR
 var var01.ls 1 1 pca1 pca2 dspx dcrb dcds vix @ c covid19 covid1901 
+var var011.ls 1 1 pca1 pca2 dspx dcrb dcds vix @ c covid19 covid1901 
 var var05.ls 1 5 pca1 pca2 dspx dcrb dcds vix @ c covid19 covid1901 
 
 ' Estima um VAR restrito 
@@ -49,15 +50,64 @@ matrix m_irf_dcds = m_irf_dcds_std * @makediagonal(g_desvios) + @ones(12,8) * @m
 matrix m_irf_vix = m_irf_vix_std * @makediagonal(g_desvios) + @ones(12,8) * @makediagonal(g_desvios)
 
 ' plota grafcos padronizados
-m_irf_dspx_std.line
-m_irf_dcrb_std.line
-m_irf_dcds_std.line
-m_irf_vix_std.line
+freeze(tab_dspx_std) m_irf_dspx_std.line
+tab_dspx_std.setelem(1) legend(Alternativo)
+tab_dspx_std.setelem(2) legend(Inflacao)
+tab_dspx_std.setelem(3) legend(Internacional)
+tab_dspx_std.setelem(4) legend(Multimercado)
+tab_dspx_std.setelem(5) legend(Pos fixado)
+tab_dspx_std.setelem(6) legend(Pre fixado)
+tab_dspx_std.setelem(7) legend(Renda variavel)
+tab_dspx_std.setelem(8) legend(Sem classificacao)
+
+freeze(tab_dcrb_std) m_irf_dcrb_std.line
+tab_dcrb_std.setelem(1) legend(Alternativo)
+tab_dcrb_std.setelem(2) legend(Inflacao)
+tab_dcrb_std.setelem(3) legend(Internacional)
+tab_dcrb_std.setelem(4) legend(Multimercado)
+tab_dcrb_std.setelem(5) legend(Pos fixado)
+tab_dcrb_std.setelem(6) legend(Pre fixado)
+tab_dcrb_std.setelem(7) legend(Renda variavel)
+tab_dcrb_std.setelem(8) legend(Sem classificacao)
+
+freeze(tab_dcds_std) m_irf_dcds_std.line
+tab_dcds_std.setelem(1) legend(Alternativo)
+tab_dcds_std.setelem(2) legend(Inflacao)
+tab_dcds_std.setelem(3) legend(Internacional)
+tab_dcds_std.setelem(4) legend(Multimercado)
+tab_dcds_std.setelem(5) legend(Pos fixado)
+tab_dcds_std.setelem(6) legend(Pre fixado)
+tab_dcds_std.setelem(7) legend(Renda variavel)
+tab_dcds_std.setelem(8) legend(Sem classificacao)
+
+freeze(tab_vix_std) m_irf_vix_std.line
+tab_vix_std.setelem(1) legend(Alternativo)
+tab_vix_std.setelem(2) legend(Inflacao)
+tab_vix_std.setelem(3) legend(Internacional)
+tab_vix_std.setelem(4) legend(Multimercado)
+tab_vix_std.setelem(5) legend(Pos fixado)
+tab_vix_std.setelem(6) legend(Pre fixado)
+tab_vix_std.setelem(7) legend(Renda variavel)
+tab_vix_std.setelem(8) legend(Sem classificacao)
+
+tab_dspx_std.addtext(t) "Choque no SPX"
+tab_dcrb_std.addtext(t) "Choque no CRB"
+tab_dcds_std.addtext(t) "Choque no CDS"
+ tab_vix_std.addtext(t) "Choque no VIX"
+
+tab_dspx_std.save(t=png, c, box, port, w=6.9, h = 5.0, u=in, d=96, trans) c:\users\bteba\documents\tab_dspx_std.png
+tab_dcrb_std.save(t=png, c, box, port, w=6.9, h = 5.0, u=in, d=96, trans) c:\users\bteba\documents\tab_dcrb_std.png
+tab_dcds_std.save(t=png, c, box, port, w=6.9, h = 5.0, u=in, d=96, trans) c:\users\bteba\documents\tab_dcds_std.png
+ tab_vix_std.save(t=png, c, box, port, w=6.9, h = 5.0, u=in, d=96, trans) c:\users\bteba\documents\tab_vix_std.png
 
 ' plota grafcos
 m_irf_dspx.line
 m_irf_dcrb.line
 m_irf_dcds.line
 m_irf_vix.line
+
+
+' Fecha o Workfile
+'wfclose c:\users\bteba\documents\github\gyorgy\eviews\workfile.wf1
 
 
